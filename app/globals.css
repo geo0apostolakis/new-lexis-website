@@ -1,26 +1,341 @@
 @import "tailwindcss";
 
+/* Same font stacks as the original site; the Google Fonts link is in app/layout.js */
+@theme {
+    --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+    --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Brand palette, sampled from the New Lexis logo:
+   yellow arc #FCEC04, "Linguistic Studies" bar #2C2C2C, grey plate #6C6C6C, dot grid #B4B4B4 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --bg: #fbfbfb;
+    --surface: #ffffff;
+    --ink: #1f1f1f;
+    --ink-soft: #3a3a3a;
+    --muted: #6c6c6c;
+    --dark: #2c2c2c;
+    --line: rgba(31, 31, 31, 0.1);
+    --line-strong: rgba(31, 31, 31, 0.18);
+    --accent: #fcec04;
+    --accent-hover: #1f1f1f;
+    --accent-pale: #fff9cc;
+    --grey-pale: #efefef;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01" on, "cv11" on;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg);
+}
+
+/* Custom selection */
+::selection {
+    background: var(--accent);
+    color: var(--ink);
+}
+
+/* Tailwind v4 puts utilities in a cascade layer, and unlayered CSS beats layered CSS.
+   These classes live in the components layer so utilities like text-[...] still win, as they did in the original. */
+@layer components {
+    .font-serif {
+        font-feature-settings:
+            "ss01" on,
+            "dlig" on;
+    }
+
+    .label-eyebrow {
+        font-family: var(--font-sans);
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--ink);
+    }
+
+    /* Yellow highlighter, the brand's accent on light backgrounds (yellow text on white is unreadable) */
+    /* The band covers 58%-92% of the line; background-size is what the sweep animates */
+    .mark {
+        color: var(--ink);
+        background-image: linear-gradient(var(--accent), var(--accent));
+        background-repeat: no-repeat;
+        background-position: 0 88%;
+        background-size: 100% 34%;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        padding: 0 0.06em;
+    }
+
+    /* Yellow label chip, like the yellow on the logo */
+    .tag {
+        background: var(--accent);
+        color: var(--ink);
+        padding: 4px 8px;
+    }
+
+    /* Underline hover for links on light backgrounds */
+    .link-hover {
+        text-decoration-line: underline;
+        text-decoration-color: transparent;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 6px;
+        transition: text-decoration-color 0.2s ease;
+    }
+    .link-hover:hover {
+        text-decoration-color: var(--accent);
+    }
+
+    /* Layered border helpers */
+    .hairline {
+        border: 1px solid var(--line);
+    }
+    .hairline-t {
+        border-top: 1px solid var(--line);
+    }
+    .hairline-b {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 50s linear infinite;
+    }
+
+    .fade-up {
+        animation: fadeUp 0.7s ease forwards;
+    }
+
+    /* Cursor for CTA */
+    .cta-cursor {
+        cursor: pointer;
+    }
+
+    /* Sharp input overrides */
+    .lx-input {
+        width: 100%;
+        border: 1px solid var(--line-strong);
+        background: #fff;
+        padding: 14px 16px;
+        font-family: var(--font-sans);
+        font-size: 15px;
+        color: var(--ink);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        border-radius: 0;
+    }
+    .lx-input:focus {
+        outline: none;
+        border-color: var(--ink);
+        box-shadow: inset 0 -3px 0 var(--accent);
+    }
+
+    .lx-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--accent);
+        color: var(--ink);
+        padding: 14px 26px;
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.16s var(--ease-out);
+        border: 1px solid var(--accent);
+        border-radius: 0;
+    }
+    .lx-btn-primary:hover {
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
+        color: var(--accent);
+        transform: translateY(-1px);
+    }
+    .lx-btn-primary:active,
+    .lx-btn-secondary:active {
+        transform: scale(0.97);
+    }
+
+    .lx-btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+        color: var(--ink);
+        padding: 14px 26px;
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.16s var(--ease-out);
+        border: 1px solid var(--ink);
+        border-radius: 0;
+    }
+    .lx-btn-secondary:hover {
+        background: var(--ink);
+        color: var(--accent);
+    }
+
+    /* Number marker */
+    .num-tag {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 500;
+        color: var(--muted);
+    }
+}
+
+/* ---------- Motion ----------
+   The inline script in app/layout.js adds .motion to <html> before first paint (unless the visitor
+   prefers reduced motion). Everything below only hides what components/Motion.js is about to animate,
+   so with no JS, or reduced motion, the page renders exactly as before. */
+
+#intro {
+    display: none;
+}
+.motion #intro {
+    display: block;
+}
+.motion [data-intro-logo],
+.motion [data-intro-tag] {
+    opacity: 0;
+}
+.motion [data-intro-line] {
+    transform: scaleX(0);
+}
+.intro-seen [data-intro-inner],
+.intro-seen [data-intro-panel="accent"] {
+    display: none;
+}
+.intro-lock,
+.intro-lock body {
+    overflow: hidden;
+}
+
+.motion [data-nav-item],
+.motion [data-hero],
+.motion [data-reveal],
+.motion [data-stagger] > *,
+.motion [data-stagger-inner] > * > * {
+    opacity: 0;
+}
+.motion [data-hero-title],
+.motion [data-split] {
+    visibility: hidden;
+}
+.motion .mark {
+    background-size: 0% 34%;
+}
+.motion [data-img] {
+    clip-path: inset(100% 0 0 0);
+}
+.motion .marquee {
+    animation: none;
+}
+
+/* Line masks for split headings: room above for Greek tonos on capitals, below for descenders */
+.hero-line,
+.split-line-mask {
+    padding-block: 0.12em 0.2em;
+    margin-block: -0.12em -0.2em;
+}
+.hero-line {
+    display: block;
+    overflow: clip;
+}
+
+/* Thin yellow reading-progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    z-index: 60;
+    pointer-events: none;
+}
+
+/* Language cards: a yellow rule draws in along the bottom, the name nudges right */
+.lx-card {
+    position: relative;
+}
+.lx-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.35s var(--ease-out);
+}
+.lx-card-name {
+    transition: transform 0.35s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+    .lx-card:hover::after {
+        transform: scaleX(1);
+    }
+    .lx-card:hover .lx-card-name {
+        transform: translateX(6px);
+    }
+}
+
+/* Mobile menu drops from the bar */
+.menu-drop {
+    transform-origin: 50% 0;
+    animation: menuDrop 0.22s var(--ease-out);
+}
+@keyframes menuDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee,
+    .menu-drop {
+        animation: none;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
