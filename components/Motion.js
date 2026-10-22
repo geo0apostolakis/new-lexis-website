@@ -67,9 +67,21 @@ export default function Motion() {
     const mm = gsap.matchMedia();
     mm.add("(hover: hover) and (pointer: fine)", magnetic);
 
+    // Fonts or images that arrive late shift the layout after the triggers were measured. Re-measure then,
+    // and once more at the very bottom, so a section measured too low can't stay hidden on a slow phone.
     document.fonts?.ready.then(() => ScrollTrigger.refresh());
+    const onLoad = () => ScrollTrigger.refresh();
+    window.addEventListener("load", onLoad);
+    let bottomRefreshed = false;
+    lenis.on("scroll", ({ scroll, limit }) => {
+      if (!bottomRefreshed && scroll >= limit - 4) {
+        bottomRefreshed = true;
+        ScrollTrigger.refresh();
+      }
+    });
 
     return () => {
+      window.removeEventListener("load", onLoad);
       mm.revert();
       gsap.ticker.remove(raf);
       lenis.destroy();
