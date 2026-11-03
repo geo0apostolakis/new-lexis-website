@@ -29,7 +29,7 @@ export default function Events() {
     <section
       id="events"
       data-testid="events"
-      className="theme-lilac py-24 lg:py-32 border-b border-black/10 bg-white"
+      className="py-24 lg:py-32 border-b border-black/10 bg-white"
     >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-12 gap-6 mb-16">

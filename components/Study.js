@@ -13,13 +13,13 @@ const programs = [
   },
 ];
 
-// The school-support side of New Lexis, on a pale accent band (--accent-wash in app/globals.css).
+// The school-support side of New Lexis, on a pale lilac band (--lilac-bg in app/globals.css).
 export default function Study() {
   return (
     <section
       id="meleti"
       data-testid="study"
-      className="py-24 lg:py-36 border-b border-black/10 bg-[var(--accent-wash)]"
+      className="py-24 lg:py-36 border-b border-black/10 bg-[var(--lilac-bg)]"
     >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-12 gap-6 lg:gap-12 items-end">

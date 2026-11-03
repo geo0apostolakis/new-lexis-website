@@ -7,7 +7,8 @@
 }
 
 /* Brand palette, sampled from the New Lexis logo:
-   yellow arc #FCEC04, "Linguistic Studies" bar #2C2C2C, grey plate #6C6C6C, dot grid #B4B4B4 */
+   yellow arc #FCEC04, "Linguistic Studies" bar #2C2C2C, grey plate #6C6C6C, dot grid #B4B4B4.
+   The client asked for lilac wherever the site used yellow, so --accent is lilac; the logo keeps its yellow. */
 :root {
     --bg: #fbfbfb;
     --surface: #ffffff;
@@ -17,19 +18,12 @@
     --dark: #2c2c2c;
     --line: rgba(31, 31, 31, 0.1);
     --line-strong: rgba(31, 31, 31, 0.18);
-    --accent: #fcec04;
+    --accent: #c9a6ec;
     --accent-hover: #1f1f1f;
-    --accent-pale: #fff9cc;
-    --accent-wash: #fffde6;
+    --accent-pale: #f3ebfc;
+    --lilac-bg: #f9f5fd;
     --grey-pale: #efefef;
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-/* Events section: yellow becomes lilac. Everything accent-coloured inside follows. */
-.theme-lilac {
-    --accent: #c9a6ec;
-    --accent-pale: #f3ebfc;
-    --accent-wash: #f9f5fd;
 }
 
 html,
@@ -71,7 +65,7 @@ body {
         color: var(--ink);
     }
 
-    /* Yellow highlighter, the brand's accent on light backgrounds (yellow text on white is unreadable) */
+    /* Lilac highlighter, the accent on light backgrounds (lilac text on white is too faint to read) */
     /* The band covers 58%-92% of the line; background-size is what the sweep animates */
     .mark {
         color: var(--ink);
@@ -84,7 +78,7 @@ body {
         padding: 0 0.06em;
     }
 
-    /* Yellow label chip, like the yellow on the logo */
+    /* Lilac label chip */
     .tag {
         background: var(--accent);
         color: var(--ink);
@@ -267,7 +261,7 @@ body {
     overflow: clip;
 }
 
-/* Thin yellow reading-progress bar */
+/* Thin lilac reading-progress bar */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -281,7 +275,7 @@ body {
     pointer-events: none;
 }
 
-/* Language cards: a yellow rule draws in along the bottom, the name nudges right */
+/* Language cards: a lilac rule draws in along the bottom, the name nudges right */
 .lx-card {
     position: relative;
 }

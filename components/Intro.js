@@ -1,5 +1,5 @@
 // Opening screen. Hidden unless <html> has .motion; components/Motion.js plays it and then removes it.
-// Two stacked curtains: the charcoal one lifts first, then the yellow one behind it.
+// Two stacked curtains: the charcoal one lifts first, then the lilac one behind it.
 export default function Intro() {
   return (
     <div id="intro" aria-hidden="true" className="fixed inset-0 z-[100]">
