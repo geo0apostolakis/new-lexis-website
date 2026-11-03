@@ -22,7 +22,7 @@ export default function Intro() {
             className="mt-8 block h-[3px] w-[min(62vw,380px)] bg-[var(--accent)] origin-left"
           />
           <span data-intro-tag className="mt-5 label-eyebrow text-[10px] text-white/60">
-            Από το 1989 · Πετρούπολη
+            Από το 2006 · Πετρούπολη
           </span>
         </div>
       </div>

@@ -54,6 +54,7 @@ export default function Footer() {
           </div>
           <ul className="space-y-2 text-sm">
             <li>Ιωάννου Χρυσοστόμου 94</li>
+            <li>Παράρτημα: Ιωάννου Χρυσοστόμου 95</li>
             <li>Πετρούπολη 132 31</li>
             <li>
               <a href="tel:+302105060025" className="hover:text-[var(--accent)]">
@@ -74,6 +75,9 @@ export default function Footer() {
           </div>
           <ul className="space-y-2 text-sm">
             <li>
+              <a href="#events" className="hover:text-[var(--accent)]">Events</a>
+            </li>
+            <li>
               <a href="#about" className="hover:text-[var(--accent)]">Σχολή</a>
             </li>
             <li>
@@ -81,6 +85,9 @@ export default function Footer() {
             </li>
             <li>
               <a href="#exams" className="hover:text-[var(--accent)]">Εξετάσεις</a>
+            </li>
+            <li>
+              <a href="#meleti" className="hover:text-[var(--accent)]">Μελέτη</a>
             </li>
             <li>
               <a href="#booking" className="hover:text-[var(--accent)]">Δωρεάν Τεστ</a>

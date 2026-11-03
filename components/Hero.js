@@ -12,7 +12,7 @@ export default function Hero() {
           {/* Left text */}
           <div className="col-span-12 lg:col-span-7">
             <div data-hero="eyebrow" className="flex flex-wrap items-center gap-3 mb-8">
-              <span className="label-eyebrow">Από το 1989 · Πετρούπολη</span>
+              <span className="label-eyebrow">Από το 2006 · Πετρούπολη</span>
               <span className="w-12 h-px bg-black/30" />
               <span className="label-eyebrow tag">5 Γλώσσες · A1 — C2</span>
             </div>

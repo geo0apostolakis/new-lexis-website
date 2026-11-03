@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 
 const stats = [
   { num: "100%", count: 100, suffix: "%", label: "Επιτυχία σε εξετάσεις" },
-  { num: "30+", count: 30, suffix: "+", label: "Χρόνια εμπειρίας" },
+  { num: "20+", count: 20, suffix: "+", label: "Χρόνια εμπειρίας" },
   { num: "5", count: 5, label: "Γλώσσες" },
   { num: "5.0", count: 5, decimals: 1, label: "Google rating" },
 ];
@@ -10,6 +10,7 @@ const stats = [
 const bullets = [
   "Εξειδικευμένες καθηγήτριες με σπουδές στο εξωτερικό",
   "Μικρά τμήματα — εξατομικευμένη προσοχή σε κάθε μαθητή",
+  "Τμήματα ενηλίκων με έμφαση στην παραγωγή προφορικού λόγου (speaking workshops)",
   "Δια ζώσης & online τμήματα, με ευέλικτο ωράριο",
   "Σύγχρονο διδακτικό υλικό & συνεχής αξιολόγηση",
 ];
@@ -25,9 +26,8 @@ export default function About() {
         <div className="col-span-12 lg:col-span-5">
           <span data-reveal className="label-eyebrow inline-block">01 — Το Φροντιστήριο</span>
           <h2 data-split className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] font-medium">
-            Ένα κέντρο ξένων γλωσσών{" "}
-            <em className="italic mark">από γυναίκες</em>, για
-            όλους όσοι θέλουν να μάθουν σωστά.
+            Ένα <em className="italic mark">Κέντρο Ξένων Γλωσσών</em> για
+            όλους όσους θέλουν να μάθουν σωστά.
           </h2>
 
           <div data-img className="hidden lg:block mt-10 border border-black/15 overflow-hidden">
@@ -48,8 +48,9 @@ export default function About() {
               New Lexis Language Centre
             </span>{" "}
             βρίσκεται στην καρδιά της Πετρούπολης και αποτελεί σημείο αναφοράς
-            για τη διδασκαλία των ξένων γλωσσών. Με μια ομάδα έμπειρων
-            καθηγητριών, προετοιμάζουμε μαθητές κάθε ηλικίας — από τα πρώτα τους
+            για τη διδασκαλία των ξένων γλωσσών. Είμαστε μια{" "}
+            <span className="font-medium text-[var(--ink)]">20μελής ακαδημαϊκή ομάδα</span>{" "}
+            έμπειρων καθηγητριών και προετοιμάζουμε μαθητές κάθε ηλικίας — από τα πρώτα τους
             βήματα στο <em className="italic">A1</em> μέχρι την κορυφαία
             πιστοποίηση <em className="italic">C2</em> — σε{" "}
             <span className="font-medium text-[var(--ink)]">

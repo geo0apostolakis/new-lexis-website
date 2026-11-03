@@ -3,7 +3,7 @@ const languages = [
     code: "EN",
     name: "Αγγλικά",
     sub: "English",
-    desc: "Από τα πρώτα βήματα μέχρι Proficiency. Cambridge, Michigan, IELTS, TOEIC.",
+    desc: "Από τα πρώτα βήματα μέχρι Proficiency. Cambridge, Michigan, LRN, IELTS, TOEIC.",
     flag: "🇬🇧",
   },
   {

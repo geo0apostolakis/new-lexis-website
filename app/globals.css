@@ -20,8 +20,16 @@
     --accent: #fcec04;
     --accent-hover: #1f1f1f;
     --accent-pale: #fff9cc;
+    --accent-wash: #fffde6;
     --grey-pale: #efefef;
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Events section: yellow becomes lilac. Everything accent-coloured inside follows. */
+.theme-lilac {
+    --accent: #c9a6ec;
+    --accent-pale: #f3ebfc;
+    --accent-wash: #f9f5fd;
 }
 
 html,

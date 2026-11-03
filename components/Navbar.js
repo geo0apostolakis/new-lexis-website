@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 
 const links = [
+  { href: "#events", label: "Events" },
   { href: "#about", label: "Σχολή" },
   { href: "#levels", label: "Επίπεδα" },
   { href: "#exams", label: "Εξετάσεις" },
+  { href: "#meleti", label: "Μελέτη" },
   { href: "#testimonials", label: "Αξιολογήσεις" },
   { href: "#booking", label: "Δωρεάν Τεστ" },
   { href: "#contact", label: "Επικοινωνία" },
@@ -51,7 +53,7 @@ export default function Navbar() {
           />
         </a>
 
-        <nav data-nav-item className="hidden lg:flex items-center gap-8">
+        <nav data-nav-item className="hidden xl:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.href}
@@ -83,7 +85,7 @@ export default function Navbar() {
           <button
             data-testid="navbar-burger"
             onClick={() => setOpen((v) => !v)}
-            className="lg:hidden p-2 border border-black/10"
+            className="xl:hidden p-2 border border-black/10"
             aria-label="menu"
           >
             <span className="block w-5 h-[1.5px] bg-[var(--ink)] mb-1.5" />
@@ -94,7 +96,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="menu-drop lg:hidden bg-white border-t border-black/10">
+        <div className="menu-drop xl:hidden bg-white border-t border-black/10">
           <div className="px-6 py-6 flex flex-col gap-4">
             {links.map((l) => (
               <a

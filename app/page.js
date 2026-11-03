@@ -4,6 +4,8 @@ import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Levels from "@/components/Levels";
 import Exams from "@/components/Exams";
+import Events from "@/components/Events";
+import Study from "@/components/Study";
 import Approach from "@/components/Approach";
 import Testimonials from "@/components/Testimonials";
 import BookingSection from "@/components/BookingSection";
@@ -21,10 +23,12 @@ export default function Landing() {
       <Navbar />
       <Hero />
       <Marquee />
+      <Events />
       <About />
       <Levels />
       <Exams />
       <Approach />
+      <Study />
       <Testimonials />
       <BookingSection />
       <ContactSection />

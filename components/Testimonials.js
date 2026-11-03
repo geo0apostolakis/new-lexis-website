@@ -31,7 +31,7 @@ export default function Testimonials() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-12 gap-6 mb-16 items-end">
           <div className="col-span-12 lg:col-span-7">
-            <span data-reveal className="label-eyebrow inline-block">05 — Μαρτυρίες</span>
+            <span data-reveal className="label-eyebrow inline-block">05 — Σχόλια</span>
             <h2 data-split className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] font-medium">
               <em className="italic mark">5.028</em> άνθρωποι έχουν ήδη μιλήσει.
             </h2>

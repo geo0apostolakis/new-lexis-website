@@ -4,11 +4,18 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Instagram } from "@/components/SocialIcons";
 import { INBOX, contactEmail, mailtoHref } from "@/lib/messages";
 
 const API = "/api";
 
 const EMPTY = { name: "", email: "", phone: "", subject: "", message: "" };
+
+// Searching the business name (not the bare street address) makes the embed show the New Lexis
+// listing card with its Google rating, and "Open in Maps" / directions land on that listing.
+const PLACE = "New Lexis Language Centre, Ιωάννου Χρυσοστόμου 94, Πετρούπολη";
+const MAP_SRC = `https://maps.google.com/maps?q=${encodeURIComponent(PLACE)}&z=17&output=embed`;
+const DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(PLACE)}`;
 
 export default function ContactSection() {
   const [form, setForm] = useState(EMPTY);
@@ -58,6 +65,12 @@ export default function ContactSection() {
                   <br />
                   Πετρούπολη 132 31
                 </div>
+                <div className="label-eyebrow text-[10px] text-[var(--muted)] mt-4">Παράρτημα</div>
+                <div className="text-[15px] mt-1" data-testid="contact-branch">
+                  Ιωάννου Χρυσοστόμου 95,
+                  <br />
+                  Πετρούπολη 132 31
+                </div>
               </div>
             </div>
 
@@ -98,6 +111,21 @@ export default function ContactSection() {
                 </a>
               </div>
             </div>
+
+            <div className="flex items-start gap-4" data-testid="contact-instagram">
+              <Instagram className="w-5 h-5 text-[var(--ink)] mt-1" strokeWidth={1.5} />
+              <div>
+                <div className="label-eyebrow text-[10px] text-[var(--muted)]">Instagram</div>
+                <a
+                  href="https://www.instagram.com/new_lexis/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-hover text-[15px] mt-1 block"
+                >
+                  @new_lexis
+                </a>
+              </div>
+            </div>
           </div>
 
           <div data-img className="mt-10 border border-black/15 overflow-hidden">
@@ -110,14 +138,27 @@ export default function ContactSection() {
             />
           </div>
 
-          <div data-reveal className="mt-6 border border-black/15">
-            <iframe
-              title="Map"
-              data-testid="contact-map"
-              className="w-full h-[280px]"
-              loading="lazy"
-              src="https://www.google.com/maps?q=Ioannou+Chrysostomou+94+Petroupoli&output=embed"
-            />
+          <div data-reveal className="mt-6">
+            <div className="border border-black/15">
+              <iframe
+                title="New Lexis Language Centre στο Google Maps"
+                data-testid="contact-map"
+                className="block w-full h-[320px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                src={MAP_SRC}
+              />
+            </div>
+            <a
+              href={DIRECTIONS}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="contact-directions"
+              className="link-hover mt-4 inline-flex items-center gap-2 text-sm font-medium"
+            >
+              <MapPin className="w-4 h-4" strokeWidth={1.5} /> Οδηγίες στο Google Maps →
+            </a>
           </div>
         </div>
 
